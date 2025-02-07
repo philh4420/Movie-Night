@@ -7,7 +7,7 @@ import {
   onValue, 
   update, 
   remove, 
-  off // ✅ Ensure `off` is included for removing listeners
+  off 
 } from "firebase/database";
 
 // ✅ Firebase Configuration (Using Environment Variables)
@@ -20,6 +20,11 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
+
+// ✅ Log environment variables for debugging (only in development)
+if (import.meta.env.DEV) {
+  console.log("Firebase Config:", firebaseConfig);
+}
 
 // ✅ Initialize Firebase App & Database
 const app = initializeApp(firebaseConfig);
@@ -37,6 +42,6 @@ export {
   onValue, 
   update, 
   remove, 
-  off, // ✅ Now properly exported
+  off, 
   generatePollId 
 };
